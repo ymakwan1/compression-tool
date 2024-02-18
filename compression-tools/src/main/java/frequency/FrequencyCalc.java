@@ -1,5 +1,7 @@
 package frequency;
 
+import file_operations.FileHandling;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,16 +15,9 @@ public class FrequencyCalc {
     }
 
     public void buildFrequencyFromFile(String fileNameIn){
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileNameIn));
-            String line;
-            while ((line = bufferedReader.readLine()) != null){
-               line = line.replaceAll("\\s", "");
-               buildFrequency(line);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        FileHandling fileHandling = new FileHandling();
+        String line = fileHandling.readFileLine(fileNameIn);
+        buildFrequency(line);
     }
 
     private void buildFrequency(String lineIn){
