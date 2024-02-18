@@ -1,6 +1,6 @@
 package driver;
 
-import projectmanager.ProjectManager;
+import project_manager.ProjectManager;
 
 public class Driver {
     public static void main(String[] args) {
