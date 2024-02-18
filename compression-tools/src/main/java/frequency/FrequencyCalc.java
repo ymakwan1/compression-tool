@@ -27,7 +27,7 @@ public class FrequencyCalc {
 
     private void buildFrequency(String lineIn){
         for (char c : lineIn.toCharArray()){
-            hashMap.put(c, hashMap.getOrDefault(c,1) + 1);
+            hashMap.put(c, hashMap.getOrDefault(c,0) + 1);
         }
     }
 
