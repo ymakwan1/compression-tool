@@ -17,9 +17,13 @@ public class ProjectManager {
         FrequencyCalc frequencyCalc = new FrequencyCalc();
         if (fileHandling.validateFile(fileName)){
             frequencyCalc.buildFrequencyFromFile(fileName);
+
             HashMap<Character, Integer> hashMap = frequencyCalc.getFrequencyMap();
+
             HuffmanTree huffmanTree = new HuffmanTree();
             huffmanTree.buildHuffManTree(hashMap);
+            huffmanTree.buildPrefixCodeTable();
+
         } else {
             System.out.println("File does not exist.");
         }

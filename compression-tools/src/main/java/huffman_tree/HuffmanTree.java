@@ -32,4 +32,31 @@ public class HuffmanTree {
         root = priorityQueue.poll();
     }
 
+    public void buildPrefixCodeTable(){
+        HashMap<Character, String> prefixCodeTable = new HashMap<>();
+        StringBuilder stringBuilder = new StringBuilder();
+        buildPrefixCodeTableHelper(root, stringBuilder, prefixCodeTable);
+
+        for (Map.Entry<Character, String> map : prefixCodeTable.entrySet()){
+            System.out.println("Character : " +  map.getKey() + " String : " + map.getValue());
+        }
+    }
+
+    private void buildPrefixCodeTableHelper(HuffmanNode rootIn, StringBuilder stringBuilderIn, HashMap<Character, String> prefixCodeTableIn) {
+        if (rootIn == null){
+            return;
+        }
+
+        if (rootIn.leftChild == null && rootIn.rightChild == null) {
+            prefixCodeTableIn.put(rootIn.character, stringBuilderIn.toString());
+        }
+
+        stringBuilderIn.append('0');
+        buildPrefixCodeTableHelper(rootIn.leftChild, stringBuilderIn, prefixCodeTableIn);
+        stringBuilderIn.deleteCharAt(stringBuilderIn.length() - 1);
+
+        stringBuilderIn.append('1');
+        buildPrefixCodeTableHelper(rootIn.rightChild, stringBuilderIn, prefixCodeTableIn);
+        stringBuilderIn.deleteCharAt(stringBuilderIn.length() - 1);
+    }
 }
