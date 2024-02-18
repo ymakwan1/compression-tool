@@ -16,8 +16,8 @@ public class FileHandling {
     public String readFileLine(String fileNameIn){
         String line;
         try {
-            line = Files.readString(Paths.get(fileNameIn));
-            line = line.replaceAll("\\s", "");
+            line = new String(Files.readAllBytes(Paths.get(fileNameIn)));
+//            line = line.replaceAll("\\s", "");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
