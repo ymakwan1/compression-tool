@@ -25,4 +25,8 @@ public class FrequencyCalc {
     public int getFrequency(char key){
         return hashMap.getOrDefault(key, 0);
     }
+
+    public HashMap<Character, Integer> getFrequencyMap(){
+        return hashMap;
+    }
 }
