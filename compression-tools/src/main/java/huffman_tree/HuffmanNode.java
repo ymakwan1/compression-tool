@@ -1,6 +1,8 @@
 package huffman_tree;
 
-public class HuffmanNode  {
+import java.io.Serializable;
+
+public class HuffmanNode implements Serializable {
 
     int charFrequency;
     HuffmanNode leftChild;

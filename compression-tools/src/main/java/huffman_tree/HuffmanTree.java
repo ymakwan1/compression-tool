@@ -12,7 +12,7 @@ public class HuffmanTree {
 
     }
 
-    public void buildHuffManTree(HashMap<Character, Integer> hashMap){
+    public HuffmanNode buildHuffManTree(HashMap<Character, Integer> hashMap){
         PriorityQueue<HuffmanNode> priorityQueue = new PriorityQueue<>(
                 Comparator.comparingInt(HuffmanNode::getCharFrequency)
         );
@@ -30,16 +30,16 @@ public class HuffmanTree {
         }
 
         root = priorityQueue.poll();
+        return root;
     }
 
-    public void buildPrefixCodeTable(){
+    public HashMap<Character, String> buildPrefixCodeTable(){
         HashMap<Character, String> prefixCodeTable = new HashMap<>();
         StringBuilder stringBuilder = new StringBuilder();
         buildPrefixCodeTableHelper(root, stringBuilder, prefixCodeTable);
 
-        for (Map.Entry<Character, String> map : prefixCodeTable.entrySet()){
-            System.out.println("Character : " +  map.getKey() + " String : " + map.getValue());
-        }
+        System.out.println(prefixCodeTable.size());
+        return prefixCodeTable;
     }
 
     private void buildPrefixCodeTableHelper(HuffmanNode rootIn, StringBuilder stringBuilderIn, HashMap<Character, String> prefixCodeTableIn) {
